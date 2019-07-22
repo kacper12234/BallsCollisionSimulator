@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.UIManager;
 
 public class Buttons extends JPanel{
 	/**
@@ -43,7 +44,7 @@ public class Buttons extends JPanel{
 		setPreferredSize(new Dimension(300,gui.getHeight()));
 		setLayout(null);
 		setBackground(Color.ORANGE.darker());
-		Font f=new Font("default", Font.BOLD, 12 );
+		 UIManager.put("Label.font", new Font("default", Font.BOLD, 12 ));
 		Font f2=new Font("default", Font.BOLD, 16 );
 
 		m1=new SpinnerNumberModel(42,10,300,1);
@@ -56,42 +57,34 @@ public class Buttons extends JPanel{
 
 		spdx=new JLabel("Podaj prędkość poziomą ");
 		spdx.setBounds(80, 90, 300, 40);
-		spdx.setFont(f);
 		spdx.setVisible(true);
 		add(spdx);
 		spdy=new JLabel("Podaj prędkość pionową ");
 		spdy.setBounds(80, 170, 300, 40);
-		spdy.setFont(f);
 		spdy.setVisible(true);
 		add(spdy);
 		pozx=new JLabel("Podaj współrzędną x ");
 		pozx.setBounds(90, 250, 300, 40);
-		pozx.setFont(f);
 		pozx.setVisible(true);
 		add(pozx);
 		pozy=new JLabel("Podaj współrzędną y ");
 		pozy.setBounds(90, 320, 300, 40);
-		pozy.setFont(f);
 		pozy.setVisible(true);
 		add(pozy);
 		sr=new JLabel("Podaj średnicę ");
 		sr.setBounds(107, 10, 300, 40);
-		sr.setFont(f);
 		sr.setVisible(true);
 		add(sr);
 		t=new JLabel("Podaj współczynnik tarcia");
 		t.setBounds(80, 590, 300, 40);
-		t.setFont(f);
 		t.setVisible(true);
 		add(t);
 		t2=new JLabel("(zmiana po zatrzymaniu i wznowieniu)");
 		t2.setBounds(45, 610, 300, 40);
-		t2.setFont(f);
 		t2.setVisible(true);
 		add(t2);
 		ms=new JLabel("Podaj masę");
 		ms.setBounds(120, 390, 300, 40);
-		ms.setFont(f);
 		ms.setVisible(true);
 		add(ms);
 		Add=new JButton("+");
@@ -120,7 +113,7 @@ public class Buttons extends JPanel{
 		Clear=new JButton("Wyczyść");
 		Clear.setBounds(100,540,100,50);
 		Clear.setVisible(true);
-		Clear.setFont(f);
+		Clear.setFont(new Font("default", Font.BOLD, 12 ));
 		add(Clear);
 		speedx=new JSpinner(m2);
 		speedx.setBounds(100, 130, 100, 30);
