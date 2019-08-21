@@ -1,5 +1,7 @@
 package collision;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import javax.swing.JFrame;
 
@@ -21,7 +23,10 @@ private BufferedImage bi;
 public GUI()
 {
 	appLogic=new AppLogic(this);
-setSize(1400,800);
+	Dimension scrsize=Toolkit.getDefaultToolkit().getScreenSize();
+	int h=(int)(scrsize.height*0.74);
+	int w=(int)(scrsize.width*0.73);
+setSize(w,h);
 setTitle("Symulator zderzeń");
  setResizable (false);
  setLayout(new BorderLayout());
@@ -32,7 +37,7 @@ setTitle("Symulator zderzeń");
  buttons=new Buttons(this);
  buttons.setVisible(true);
  add(buttons, BorderLayout.EAST);
-  bi = new BufferedImage(1100, getHeight(), BufferedImage.TYPE_INT_ARGB);
+  bi = new BufferedImage((int)(w*0.79), getHeight(), BufferedImage.TYPE_INT_ARGB);
 setResizable(false);
 }
 
