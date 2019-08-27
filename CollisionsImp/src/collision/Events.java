@@ -2,8 +2,6 @@ package collision;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 public class Events implements ActionListener{
 
@@ -56,12 +54,6 @@ public class Events implements ActionListener{
 			panel.getGui().getAppLogic().getBalls().remove(panel.getGui().getAppLogic().getL());
 			panel.getGui().repaint();
 		}
-		}
-		
-
-	public void ErrorMsg(String e)
-	{
-		JOptionPane.showMessageDialog(new JFrame(),e,"Błąd",JOptionPane.ERROR_MESSAGE);	
 		}
 		
 

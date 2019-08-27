@@ -19,7 +19,7 @@ private GUI gui;
 public Panel(GUI parentgui)
 {
 	gui=parentgui;
-	setPreferredSize(new Dimension(1100,gui.getHeight()));
+	setPreferredSize(new Dimension((int)(0.82*gui.getWidth()),gui.getHeight()));
 	
 }
 

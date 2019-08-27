@@ -19,7 +19,6 @@ public class AppLogic {
 	private List <Ball> balls=new ArrayList <Ball>();
 	private Color bgcolor = Color.BLACK;
 	private GUI gui;
-	private Events events;
 	private Timer timer;
 	private Random rand;
 	private double f;
@@ -110,10 +109,10 @@ b.p.sub2(b.v.multiply2(dt), color);
         
         private void updateWallCollision() {    //ustawianie kolizji ze scianą
             // borda
-            if (p.getX()-d/2<-700){
+            if (p.getX()-d/2<-gui.getWidth()/2){
                 v.setX(Math.abs(v.getX()));
             }
-            else if (p.getX()+d/2>400){
+            else if (p.getX()+d/2>gui.getWidth()*0.32){
                 v.setX(-Math.abs(v.getX()));
             }
             if (p.getY()-d/2<-gui.getHeight()/2+30){
@@ -175,15 +174,15 @@ b.p.sub2(b.v.multiply2(dt), color);
 		if(w)
 		{
 		l++;
-		balls.add(new Ball( Integer.parseInt(gui.getButtons().getPosx().getValue().toString())-150, Integer.parseInt(gui.getButtons().getPosy().getValue().toString()),
+		balls.add(new Ball( Integer.parseInt(gui.getButtons().getPosx().getValue().toString())-0.1*gui.getWidth(), Integer.parseInt(gui.getButtons().getPosy().getValue().toString()),
 				Double.parseDouble(gui.getButtons().getSpeedx().getValue().toString()), Double.parseDouble(gui.getButtons().getSpeedy().getValue().toString()), 
 				Double.parseDouble(gui.getButtons().getD().getValue().toString()),Double.parseDouble(gui.getButtons().getM().getValue().toString()), new Color(rand.nextInt(0x1000000))));
 		}
 		else
-		events.ErrorMsg("Podany obszar był zajęty");
+		gui.ErrorMsg("Podany obszar był zajęty");
 		}
 		else
-		events.ErrorMsg("Część kuli znajduje się poza obszarem. Zmień współrzędne.");
+		gui.ErrorMsg("Część kuli znajduje się poza obszarem. Zmień współrzędne.");
 		}
    
     public class MainLoop extends TimerTask {

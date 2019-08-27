@@ -41,7 +41,7 @@ public class Buttons extends JPanel{
 	public Buttons(GUI parentgui)
 	{
 		gui=parentgui;
-		setPreferredSize(new Dimension(300,gui.getHeight()));
+		setPreferredSize(new Dimension((int)(0.2*gui.getWidth()),gui.getHeight()));
 		setLayout(null);
 		setBackground(Color.ORANGE.darker());
 		 UIManager.put("Label.font", new Font("default", Font.BOLD, 12 ));
