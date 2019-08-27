@@ -161,7 +161,7 @@ b.p.sub2(b.v.multiply2(dt), color);
 		{
 		rand = new Random();
 
-		Vector n = new Vector(Integer.parseInt(gui.getButtons().getPosx().getValue().toString())-150, Integer.parseInt(gui.getButtons().getPosy().getValue().toString()) ,Color.BLACK);
+		Vector n = new Vector(Integer.parseInt(gui.getButtons().getPosx().getValue().toString())-0.1*gui.getWidth(), Integer.parseInt(gui.getButtons().getPosy().getValue().toString()) ,Color.BLACK);
 		w=true;
 		for (Ball b : gui.getAppLogic().getBalls())	
 		{
