@@ -18,7 +18,7 @@ public class GUI extends JFrame{
 	
 private Panel Graphic;
 private Buttons buttons;
-private AppLogic appLogic;
+private static AppLogic appLogic;
 private BufferedImage bi;
 
 public GUI()
