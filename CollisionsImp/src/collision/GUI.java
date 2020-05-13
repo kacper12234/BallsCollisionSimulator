@@ -2,11 +2,10 @@ package collision;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.awt.image.BufferedImage;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
-public class GUI extends JFrame{
+import javax.swing.JFrame;
+
+public class GUI extends JFrame implements GuiInterface{
 
 	
 	/**
@@ -18,33 +17,30 @@ public class GUI extends JFrame{
 	
 private Panel Graphic;
 private Buttons buttons;
-private static AppLogic appLogic;
-private BufferedImage bi;
+private AppLogic al;
+
 
 public GUI()
 {
-	appLogic=new AppLogic(this);
 	Dimension scrsize=Toolkit.getDefaultToolkit().getScreenSize();
-	int h=(int)(scrsize.height*0.74);
-	int w=(int)(h*1.7);
+	final int h=(int)(scrsize.height*0.74);
+	final int w=(int)(h*1.7);
 setSize(w,h);
 setTitle("Symulator zderzeń");
  setResizable (false);
  setLayout(new BorderLayout());
  setDefaultCloseOperation(EXIT_ON_CLOSE);
- Graphic=new Panel(this);
- Graphic.setVisible(true);
- add(Graphic, BorderLayout.WEST);
  buttons=new Buttons(this);
  buttons.setVisible(true);
  add(buttons, BorderLayout.EAST);
-  bi = new BufferedImage((int)(w*0.82), getHeight(), BufferedImage.TYPE_INT_ARGB);
+ al=new AppLogic(this,buttons);
+ Graphic=new Panel(this,al);
+ Graphic.setVisible(true);
+ add(Graphic, BorderLayout.WEST);
+ new Events(buttons,al);
+ 
 setResizable(false);
 }
-public void ErrorMsg(String e)
-{
-	JOptionPane.showMessageDialog(new JFrame(),e,"Błąd",JOptionPane.ERROR_MESSAGE);	
-	}
 	
 
 public static void main(String args[]) {
@@ -65,23 +61,7 @@ try {
 } catch (javax.swing.UnsupportedLookAndFeelException ex) {
     java.util.logging.Logger.getLogger(AppLogic.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 }
-
-java.awt.EventQueue.invokeLater(new Runnable() {
-    public void run() {
         new GUI().setVisible(true);
-    }
-});
-}
-public BufferedImage getBi() {
-	return bi;
-}
-
-public AppLogic getAppLogic() {
-	return appLogic;
-}
-
-public Buttons getButtons() {
-	return buttons;
 }
 
 }

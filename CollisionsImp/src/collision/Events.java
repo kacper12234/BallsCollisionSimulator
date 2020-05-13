@@ -6,12 +6,14 @@ import java.awt.event.ActionListener;
 public class Events implements ActionListener{
 
 
-	private Buttons panel;
+	private ButtonsInterface panel;
+	private LogicInterface alInterface;
+
 	
-	
-	public Events(Buttons buttons)
+	public Events(ButtonsInterface buttons,LogicInterface alInterface)
 	{
 		panel=buttons;
+		this.alInterface=alInterface;
 		panel.getAdd().addActionListener(this);
 		panel.getPause().addActionListener(this);
 		panel.getClear().addActionListener(this);
@@ -25,34 +27,31 @@ public class Events implements ActionListener{
 
 		if(o==panel.getAdd())
 		{
-			panel.getGui().getAppLogic().newBall();
-			panel.getGui().repaint();
+			alInterface.newBall();
+			alInterface.repaint();
 		}
 		if(o==panel.getStart())
 		{
-			panel.getGui().getAppLogic().setF(Double.parseDouble(panel.getFt().getValue().toString()));
-			panel.getGui().getAppLogic().startT();
+			alInterface.setFriction(panel.getFtValue());
+			alInterface.start();
 			panel.getStart().setVisible(false);
 			panel.getPause().setVisible(true);
 		}
 		if(o==panel.getPause())
 		{
-			panel.getGui().getAppLogic().pauseT();
+			alInterface.pause();
 			panel.getStart().setVisible(true);
 			panel.getPause().setVisible(false);
 		}
 		if(o==panel.getClear())
 		{
-			panel.getGui().getAppLogic().getBalls().clear();
-			panel.getGui().getAppLogic().setL(0);
-			panel.getGui().repaint();
+			alInterface.clear();
+			alInterface.repaint();
 		}
-		if(o==panel.getRemove() && panel.getGui().getAppLogic().getL()>0)
+		if(o==panel.getRemove())
 		{
-			
-			panel.getGui().getAppLogic().setL(panel.getGui().getAppLogic().getL()-1);
-			panel.getGui().getAppLogic().getBalls().remove(panel.getGui().getAppLogic().getL());
-			panel.getGui().repaint();
+			alInterface.remove();
+			alInterface.repaint();
 		}
 		}
 		

@@ -11,7 +11,7 @@ import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.UIManager;
 
-public class Buttons extends JPanel{
+public class Buttons extends JPanel implements InputValues,ButtonsInterface{
 	/**
 	 * 
 	 */
@@ -36,9 +36,9 @@ public class Buttons extends JPanel{
 	private JLabel ms;
 	private JLabel t,t2;
 	private SpinnerModel m1,m2,m3,m4,m5,m6,m2b;
-	private GUI gui;
+	private GuiInterface gui;
 	
-	public Buttons(GUI parentgui)
+	public Buttons(GuiInterface parentgui)
 	{
 		gui=parentgui;
 		int w=(int)(0.2*gui.getWidth());
@@ -145,13 +145,8 @@ public class Buttons extends JPanel{
 		ft.setBounds((int)(0.37*w), (int)(0.815*h), (int)(0.37*w), (int)(0.04*h));
 		ft.setVisible(true);  
 		add(ft);
-		new Events(this);
 	}
 	
-	public JSpinner getFt() {
-		return ft;
-	}
-
 	public JButton getStart() {
 		return Start;
 	}
@@ -172,31 +167,45 @@ public class Buttons extends JPanel{
 		return Clear;
 	}
 
-	public JSpinner getSpeedx() {
-		return speedx;
+	@Override
+	public int getPosxValue() {
+		// TODO Auto-generated method stub
+		return Integer.parseInt(posx.getValue().toString());
 	}
 
-	public JSpinner getSpeedy() {
-		return speedy;
+	@Override
+	public int getPosyValue() {
+		// TODO Auto-generated method stub
+		return Integer.parseInt(posy.getValue().toString());
 	}
 
-	public JSpinner getPosx() {
-		return posx;
+	@Override
+	public int getDiamValue() {
+		// TODO Auto-generated method stub
+		return Integer.parseInt(d.getValue().toString());
 	}
 
-	public JSpinner getPosy() {
-		return posy;
+	@Override
+	public double getMassValue() {
+		// TODO Auto-generated method stub
+		return Double.parseDouble(m.getValue().toString());
 	}
 
-	public JSpinner getM() {
-		return m;
+	@Override
+	public double getSpeedxValue() {
+		// TODO Auto-generated method stub
+		return Double.parseDouble(speedx.getValue().toString());
 	}
 
-	public JSpinner getD() {
-		return d;
+	@Override
+	public double getSpeedyValue() {
+		// TODO Auto-generated method stub
+		return Double.parseDouble(speedy.getValue().toString());
 	}
 
-	public GUI getGui() {
-		return gui;
+	@Override
+	public double getFtValue() {
+		// TODO Auto-generated method stub
+		return Double.parseDouble(ft.getValue().toString());
 	}
 }

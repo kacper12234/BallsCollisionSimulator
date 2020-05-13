@@ -3,6 +3,8 @@ package collision;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+
 import javax.swing.JPanel;
 
 
@@ -14,21 +16,22 @@ class Panel extends JPanel { // custom Panel
 private static final long serialVersionUID = 1L;
 
 
-private GUI gui;
+private DrawInterface di;
+private BufferedImage bi;
 
-public Panel(GUI parentgui)
+public Panel(GuiInterface gui,DrawInterface di)
 {
-	gui=parentgui;
+	this.di=di;
+	 bi = new BufferedImage((int)(gui.getWidth()*0.82), gui.getHeight(), BufferedImage.TYPE_INT_ARGB);
 	setPreferredSize(new Dimension((int)(0.82*gui.getWidth()),gui.getHeight()));
-	
 }
 
 @Override
 public void paintComponent(Graphics g) {
 super.paintComponent(g);
 
-gui.getAppLogic().draw(gui.getBi().getGraphics());
-g.drawImage(gui.getBi(), 0, 0, null);
+di.draw(bi.getGraphics());
+g.drawImage(bi, 0, 0, null);
 }
 
 

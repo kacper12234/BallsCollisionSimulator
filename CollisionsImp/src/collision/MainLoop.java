@@ -8,21 +8,21 @@ import javax.swing.SwingUtilities;
 
 public class MainLoop extends TimerTask {
 
-	private GUI gui;
+	private RepaintInterface ri;
 	
-	public MainLoop(GUI parentgui)
+	public MainLoop(RepaintInterface ri)
 	{
-		gui=parentgui;
+		this.ri=ri;
 	}
 	
     @Override
     public void run() {
-      gui.getAppLogic().update();
+     ri.update();
         try {
             SwingUtilities.invokeLater(new Runnable() {
                 @Override
                 public void run() {
-                    gui.repaint();
+                    ri.repaint();
                 }
             });
         } catch (Exception ex) {
